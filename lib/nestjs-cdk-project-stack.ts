@@ -50,7 +50,7 @@ export class NestjsCdkProjectStack extends cdk.Stack {
     // ✅ Step 6: Now update your Lambda like this:
     const lambdaFunction = new NodejsFunction(this, 'LambdaFunction', {
       runtime: lambda.Runtime.NODEJS_20_X,
-      entry: path.join(__dirname, '../../nodejs-aws-cart-api/src/main.ts'),
+      entry: path.join(process.cwd(), 'nodejs-aws-cart-api/src/main.ts'),
       handler: 'handler',
       bundling: {
         minify: true,
@@ -84,7 +84,7 @@ export class NestjsCdkProjectStack extends cdk.Stack {
      lambdaFunction.addEnvironment('DB_HOST', dbInstance.dbInstanceEndpointAddress);
     lambdaFunction.addEnvironment('DB_PORT', '5432');
     lambdaFunction.addEnvironment('DB_USER', 'postgres');
-    lambdaFunction.addEnvironment('DB_PASSWORD', 'your-password'); 
+    lambdaFunction.addEnvironment('DB_PASSWORD', 'password'); 
     lambdaFunction.addEnvironment('DB_NAME', 'nestjsdb');
   }
 }
